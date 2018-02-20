@@ -1,5 +1,5 @@
 queue()
-.defer(d3.csv,'source/data/mm_grenades_demos.csv')
+.defer(d3.csv,'source/data/mm_grenades.csv')
 .await(draw);
 
 var dataMining;
