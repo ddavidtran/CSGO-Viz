@@ -2,21 +2,23 @@ function convert2Coordinates(data){
     //Function to convert coordinates in order to plot points/heatmap
 }
 
-function map(data){
-    //Current CSGO map.
+
+
+function map(data, map){
+    //Current CSGO map
+    var currentMap = map;
+    
     var div = "#map_image";
     var width = d3.select("div").style("width"); //svg width
     var height = d3.select("div").style("height"); //svg height
 
-
     svg = d3.select("div").append("svg")
+            .attr("id", "canvas")
             .attr("width",  width)
             .attr("height", height);
-
-    var g = svg.append("svg");
     
-    var img = g.append("svg:image")
-            .attr("xlink:href", "/assets/maps/de_dust2.png")
+    var img = svg.append("svg:image")
+            .attr("xlink:href", "/assets/maps/"+currentMap+".png")
             .style("width", width)
             .style("height", height);
 
