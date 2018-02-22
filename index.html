@@ -5,8 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <title>--- TODO ---</title>
-
+    <title>CSViz</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/source/style/main.css">
@@ -16,12 +15,14 @@
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
   </head>
   <body>
     <!-- Content! -->
     <div class ="map_image">
     </div>
     <div class ="map_chart">
+      <canvas id="canvas" width="310" height="30"></canvas>
     </div>
     <div class ="map_buttons">
     </div>
@@ -29,20 +30,18 @@
     </div>
     <div class ="filter_data">
     </div>
-    <div id "map">
+    <div id "map"> 
     </div>
-
     <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
     <script src="./source/lib/js/d3.min.js"></script>
     <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="./source/lib/js/queue.js"></script>
-    
     <!-- Modules -->
     <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src='./source/js/dataMining.js' type='text/javascript'></script>
     <script src='./source/js/main.js' type='text/javascript'></script>
-  
+    <script src='./source/js/chart.js' type='text/javascript'></script>
   </body>
 </html>
