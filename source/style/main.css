@@ -14,7 +14,7 @@ body {
     position: absolute;
     height: 70%;
     width: 45%;
-    right: 2%;
+    right: 26%;
     top: 15%;
     background: rgb(80, 80, 80);
 }
@@ -22,7 +22,7 @@ body {
     position: absolute;
     height: 10%;
     width: 45%;
-    right: 2%;
+    right: 26%;
     bottom: 2%;
     background: rgb(80, 80, 80);
 }
@@ -30,7 +30,7 @@ body {
     position: absolute;
     height: 10%;
     width: 45%;
-    right: 2%;
+    right: 26%;
     top: 2%;
     background: rgb(80, 80, 80);
 }
