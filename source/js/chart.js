@@ -10,18 +10,15 @@ var jsonfile = {
           "name": "Hej",
           "age": 130
         }]
-    };
-    
+    }; 
     //TODO: Set to auto read current map json and plot data
     //auto set labels and data 
-
     var labels = jsonfile.jsonarray.map(function(e) {
         return e.name;
     });
     var data = jsonfile.jsonarray.map(function(e) {
         return e.age;
-    });;
-      
+    });
     var ctx = canvas.getContext('2d');
     var config = {
     pointDotRadius: 3,

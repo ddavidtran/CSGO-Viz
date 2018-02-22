@@ -2,11 +2,11 @@ body {
     font-family: 'eurofurence',Helvetica,Arial,sans-serif;
     color: #f3f3f3;
     font-size: 14px;        
-    background: rgb(0, 0, 0);
+    background: rgb(26, 26, 26);
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
-    background-size:cover;
+    background-size: cover;
     box-sizing: border-box;
     height: 100%;
 }
@@ -33,6 +33,9 @@ body {
     right: 26%;
     top: 2%;
     background: rgb(80, 80, 80);
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 .change_data {
     position: absolute;
@@ -49,4 +52,35 @@ body {
     left: 2%;
     bottom: 2%;
     background: rgb(80, 80, 80);
+}
+.button {
+    background-color: rgb(128, 128, 128); /* Green */
+    border: none;
+    border-radius: 5px;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-family:'Roboto',sans-serif;
+    font-weight: 500;
+    margin: 4px 2px;
+    cursor: pointer;
+    -webkit-transition-duration: 0.4s; /* Safari */
+    transition-duration: 0.4s;
+    margin-right: 15px;
+}
+.button_dust:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.button_nuke:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.button_train:hover {
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24),0 17px 50px 0 rgba(0,0,0,0.19);
+}
+.divider{
+    width: 15px;
+    height: auto;
+    display: inline-block;
 }
