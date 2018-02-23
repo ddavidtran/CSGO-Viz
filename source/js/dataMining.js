@@ -1,3 +1,3 @@
 function dataMining(data){
-    console.log(data);
+//console.log(data);
 }
