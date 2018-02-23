@@ -18,7 +18,7 @@ function convertCoordinates(data, map, resX, resY){
                 d.att_pos_x = parseFloat(resX) * ((Number(d.att_pos_x) - Number(m[i].StartX))/(Number(m[i].EndX) - Number(m[i].StartX)));
                 
                 d.att_pos_y = parseFloat(d.att_pos_y);
-                d.att_pos_x = parseFloat(resY) * ((Number(d.att_pos_y) - Number(m[i].StartY))/(Number(m[i].EndY) - Number(m[i].StartY)));
+                d.att_pos_y = parseFloat(resY) * ((Number(d.att_pos_y) - Number(m[i].StartY))/(Number(m[i].EndY) - Number(m[i].StartY)));
 
                 d.vic_pos_x = parseFloat(d.vic_pos_x);
                 d.vic_pos_x = parseFloat(resX) * ((Number(d.vic_pos_x) - Number(m[i].StartX))/(Number(m[i].EndX) - Number(m[i].StartX)));
@@ -41,7 +41,7 @@ function map(data, map){
     var height = d3.select("div").style("height"); //svg height
 
     var newData = convertCoordinates(data,map,width,height);
-    
+    console.log(newData);
     svg = d3.select("div").append("svg")
             .attr("id", "canvas")
             .attr("width",  width)
