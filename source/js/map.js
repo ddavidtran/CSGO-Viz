@@ -43,10 +43,10 @@ function map(data, map, mapData){
             .attr("width",  width)
             .attr("height", height);
     
-    var img = svg.append("svg:image")
+    var img = svg.append("image")
             .attr("xlink:href", "/assets/maps/"+currentMap+".png")
-            .style("width", width)
-            .style("height", height);
+            .attr("width", width)
+            .attr("height", height);
 
     drawPoints(newData, width, height);
       

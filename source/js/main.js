@@ -11,8 +11,9 @@ var currentMap;
 function draw(error, mapD){
   if (error) throw error;
 
-  document.getElementById("de_dust2").onclick = function(){ //If de_dust2 map is selected.
-    var e = window.event;
+
+  document.getElementById("de_dust2").onclick = function(event){ //If de_dust2 map is selected.
+    e = event || window.event;
     btn = e.target || e.srcElement;
     currentMap = String(btn.id);
     if(document.getElementById("canvas") != null){
@@ -23,8 +24,8 @@ function draw(error, mapD){
     })
   }
 
-  document.getElementById("de_inferno").onclick = function(){ //If de_inferno map is selected.
-    var e = window.event;
+  document.getElementById("de_inferno").onclick = function(event){ //If de_inferno map is selected.
+    e = event || window.event;
     btn = e.target || e.srcElement;
     currentMap = String(btn.id);
     if(document.getElementById("canvas") != null){
@@ -35,8 +36,8 @@ function draw(error, mapD){
     })
   }
 
-  document.getElementById("de_train").onclick = function(){ //If de_train is selected
-    var e = window.event;
+  document.getElementById("de_train").onclick = function(event){ //If de_train is selected
+    e = event || window.event;
     btn = e.target || e.srcElement;
     currentMap = String(btn.id);
     if(document.getElementById("canvas") != null){
