@@ -12,8 +12,8 @@ body {
 }
 .map_image {
     position: absolute;
-    height: 70%;
-    width: 45%;
+    height: 1024px;
+    width: 1024px;
     right: 26%;
     top: 15%;
     background: rgb(80, 80, 80);

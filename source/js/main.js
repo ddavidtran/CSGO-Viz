@@ -2,6 +2,7 @@ queue()
 .defer(d3.csv,'source/data/mm_master_de_dust2.csv')
 .defer(d3.csv,'source/data/mm_master_de_inferno.csv')
 .defer(d3.csv,'source/data/mm_master_de_train.csv')
+.defer(d3.csv, 'source/data/map_data.csv')
 .await(draw);
 
 var dataMining;
@@ -9,9 +10,8 @@ var map_chart;
 var map_image;
 var currentMap;
 
-function draw(error, data1, data2, data3){
+function draw(error, data1, data2, data3, mapD){
   if (error) throw error;
-  
   document.getElementById("de_dust2").onclick = function(){ //If de_dust2 map is selected.
     var e = window.event;
     btn = e.target || e.srcElement;
@@ -19,7 +19,7 @@ function draw(error, data1, data2, data3){
     if(document.getElementById("canvas") != null){
       document.getElementById("canvas").remove(); //Reset canvas when changing map.
     }
-    map_image = new map(data1, currentMap);
+    map_image = new map(data1, currentMap, mapD[0]);
   }
 
   document.getElementById("de_inferno").onclick = function(){ //If de_nuke map is selected.
@@ -29,7 +29,7 @@ function draw(error, data1, data2, data3){
     if(document.getElementById("canvas") != null){
       document.getElementById("canvas").remove(); //Reset canvas when changing map.
     }
-    map_image = new map(data2, currentMap);
+    map_image = new map(data2, currentMap, mapD[1]);
   }
 
   document.getElementById("de_train").onclick = function(){ //If de_train is selected
@@ -39,7 +39,7 @@ function draw(error, data1, data2, data3){
     if(document.getElementById("canvas") != null){
       document.getElementById("canvas").remove(); //Reset canvas when changing map.
     }
-    map_image = new map(data3, currentMap);
+    map_image = new map(data3, currentMap, mapD[2]);
   }
 
   //dataMining = new dataMining(data);

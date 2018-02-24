@@ -1,47 +1,43 @@
-/*
-md['att_pos_x'] = (md['ResX']*(md['att_pos_x']-md['StartX']))/(md['EndX']-md['StartX'])
-md['att_pos_y'] = (md['ResY']*(md['att_pos_y']-md['StartY']))/(md['EndY']-md['StartY'])
-md['vic_pos_x'] = (md['ResX']*(md['vic_pos_x']-md['StartX']))/(md['EndX']-md['StartX'])
-md['vic_pos_y'] = (md['ResY']*(md['vic_pos_y']-md['StartY']))/(md['EndY']-md['StartY'])
-*/
-
-function convertCoordinates(data, map, resX, resY){
+function convertCoordinates(data, currentMap, mapData, width, height){
+    var resX = width;
+    var resY = height;
     var newData = data;
     var i = 0;
-    var mapData = d3.csv("/source/data/map_data.csv", function(m){
-        if(map == "de_dust2"){ i = 0; }
-        else if(map == "de_inferno") { i = 1; }
-        else{ i = 2 }
-        newData.forEach(function(d){
-            if(m[i].map == d.map && m[i].map == map){
-                d.att_pos_x = parseFloat(d.att_pos_x);
-                d.att_pos_x = parseFloat(resX) * ((Number(d.att_pos_x) - Number(m[i].StartX))/(Number(m[i].EndX) - Number(m[i].StartX)));
-                
-                d.att_pos_y = parseFloat(d.att_pos_y);
-                d.att_pos_y = parseFloat(resY) * ((Number(d.att_pos_y) - Number(m[i].StartY))/(Number(m[i].EndY) - Number(m[i].StartY)));
+    newData.forEach(function(d){
+        if(mapData.map == d.map && mapData.map == currentMap){
+            d.att_pos_x = parseFloat(resX * ( (d.att_pos_x - mapData.StartX) / (mapData.EndX - mapData.StartX)));
+            d.att_pos_y = parseFloat(resY * ( (d.att_pos_y - mapData.StartY) / (mapData.EndY - mapData.StartY)));
 
-                d.vic_pos_x = parseFloat(d.vic_pos_x);
-                d.vic_pos_x = parseFloat(resX) * ((Number(d.vic_pos_x) - Number(m[i].StartX))/(Number(m[i].EndX) - Number(m[i].StartX)));
-
-                d.vic_pos_y = parseFloat(d.vic_pos_y);
-                d.vic_pos_y = parseFloat(resY) * ((Number(d.vic_pos_y) - Number(m[i].StartY))/(Number(m[i].EndY) - Number(m[i].StartY)));
-            }
-        })
+            d.vic_pos_x = parseFloat(resX * ( (d.vic_pos_x - mapData.StartX) / (mapData.EndX - mapData.StartX)));
+            d.vic_pos_y = parseFloat(resY * ( (d.vic_pos_y - mapData.StartY) / (mapData.EndY - mapData.StartY)));
+        }
     });
-
-    return newData
+    return newData;
   }
-  
 
-function map(data, map){
+function drawPoints(data, width, height){
+    var x = d3.scale.linear().range([0, width]).domain([0,width]);
+    var y = d3.scale.linear().range([height, 0]).domain([0,height]);
+
+    var circles = svg.selectAll(".circle")
+        .data(data)
+        .enter().append("circle")
+        .attr("r",3) //Radius of the dot.
+        .attr("cx", function(d) { return x(d["vic_pos_x"]); }) // x-axis coordinate of the center of the element.
+        .attr("cy", function (d) { return y(d["vic_pos_y"]); }) // y-axis coordinate of the center of the element.
+        .style("fill", "red")
+        .style("stroke-width", 1)
+        .style("stroke", "black");
+}
+
+function map(data, map, mapData){
     //Current CSGO map
     var currentMap = map;
     var div = "#map_image";
-    var width = d3.select("div").style("width"); //svg width
-    var height = d3.select("div").style("height"); //svg height
+    var width = parseFloat(d3.select("div").style("width"));  //svg width
+    var height = parseFloat(d3.select("div").style("height"));  //svg height
+    var newData = convertCoordinates(data, currentMap, mapData, width, height);
 
-    var newData = convertCoordinates(data,map,width,height);
-    console.log(newData);
     svg = d3.select("div").append("svg")
             .attr("id", "canvas")
             .attr("width",  width)
@@ -52,6 +48,8 @@ function map(data, map){
             .style("width", width)
             .style("height", height);
 
+    drawPoints(newData, width, height);
+      
     function redraw(){
         // Extract the width and height that was computed by CSS.
         var width = d3.select("div").style("width"); //svg width
