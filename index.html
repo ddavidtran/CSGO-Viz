@@ -19,19 +19,28 @@
   </head>
   <body>
     <!-- Content! -->
-    <div class ="map_image">
-    </div>
+      <div class ="map_image">
+      </div>
     <div class ="map_buttons">
         <button class="button button_dust" id = "de_dust2"> de_dust2</button>
         <button class="button button_nuke" id = "de_inferno"> de_inferno</button>
         <button class="button button_train" id = "de_train"> de_train</button>
     </div>
-    <!--<div class ="change_data">
+    <div class ="change_data">
+        <div class="dropdown" style="float:left;">
+            <button class="dropbtn">Filter Settings</button>
+            <div class="dropdown-content" style="left:0;">
+              <a href="#">Filter 1</a>
+              <a href="#">Filter 2</a>
+              <a href="#">Filter 3</a>
+            </div>
+          </div>
     </div>
     <div class ="filter_data">
+        <canvas id="canvas" width="310" height="290"></canvas>
     </div>
     <div id "map"> 
-    </div> -->
+    </div> 
     <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>

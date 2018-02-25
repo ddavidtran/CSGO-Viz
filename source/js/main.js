@@ -7,11 +7,8 @@ var map_chart;
 var map_image;
 var currentMap;
 
-
 function draw(error, mapD){
   if (error) throw error;
-
-
   document.getElementById("de_dust2").onclick = function(event){ //If de_dust2 map is selected.
     e = event || window.event;
     btn = e.target || e.srcElement;
@@ -50,5 +47,5 @@ function draw(error, mapD){
   }
 
   //dataMining = new dataMining(data);
-  //map_chart = new chart();
+  map_chart = new chart();
 }
