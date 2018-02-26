@@ -18,6 +18,7 @@ function draw(error, mapD){
     }
     d3.csv("source/data/mm_master_de_dust2.csv", function(d){
       map_image = new map(d, currentMap, mapD[0]);
+      //dataMining = new dataMining(d, currentMap, mapD[0]);
     })
   }
 
@@ -30,6 +31,7 @@ function draw(error, mapD){
     }    
     d3.csv("source/data/mm_master_de_inferno.csv", function(d){
       map_image = new map(d, currentMap, mapD[1]);
+      //dataMining = new dataMining(d, currentMap, mapD[1]);
     })
   }
 
@@ -43,9 +45,9 @@ function draw(error, mapD){
 
     d3.csv("source/data/mm_master_de_train.csv", function(d){
       map_image = new map(d, currentMap, mapD[2]);
+      //dataMining = new dataMining(d, currentMap, mapD[2]);
     })
   }
 
-  //dataMining = new dataMining(data);
-  map_chart = new chart();
+   //map_chart = new chart();
 }

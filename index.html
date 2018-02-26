@@ -6,6 +6,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>CSViz</title>
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet" href="/source/style/main.css">
@@ -16,6 +17,10 @@
       <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
     <![endif]-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.3.0/Chart.min.js"></script>
+    <script src="https://d3js.org/d3-contour.v1.min.js"></script>
+    <script src="https://d3js.org/d3.v4.min.js"></script>
+
+
   </head>
   <body>
     <!-- Content! -->
@@ -27,6 +32,7 @@
         <button class="button button_train" id = "de_train"> de_train</button>
     </div>
     <div class ="change_data">
+        <button class="button damage" id = "show_damage"> Show damage taken</button>
         <div class='switch'><div class='quality'>
             <input checked id='q1' name='q' type='radio' value='q1'>
             <label for='q1'>CT</label>
@@ -38,31 +44,37 @@
 
         <div class="round_type">
           <h3>Round Type</h3>
-        <label class="container">Eco
+        <!--<label class="container">Eco
           <input type="radio" checked="checked" name="radio">
           <span class="checkmark"></span>
         </label>
         <label class="container">Normal
           <input type="radio" name="radio">
           <span class="checkmark"></span>
-        </label>
+        </label> -->
+        <button class="button eco" id = "eco"> ECO</button>
+        <button class="button normal" id = "normal"> NORMAL</button>
+
       
         <div class="search">
             <input type="text" name="search" placeholder="AWP">
+        </div>
+        <div class "clustering">
+        <button class="button button_dust" id = "dbscan"> Density cluster</button>
         </div>
       </div>
     </div>
     <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
-    <script src="./source/lib/js/d3.min.js"></script>
-    <script src="https://d3js.org/topojson.v2.min.js"></script>
     <script src="./source/lib/js/queue.js"></script>
     <!-- Modules -->
-    <script src="http://d3js.org/d3.v3.min.js"></script>
     <script src='./source/js/dataMining.js' type='text/javascript'></script>
     <script src='./source/js/map.js' type='text/javascript'></script>
     <script src='./source/js/main.js' type='text/javascript'></script>
     <script src='./source/js/chart.js' type='text/javascript'></script>
+    <script src='./source/lib/js/jDBSCAN.js' type='text/javascript'></script>
+
+
   </body>
 </html>

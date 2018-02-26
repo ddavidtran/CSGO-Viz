@@ -1,3 +1,16 @@
+function normalize (val, max, min) { return (val - min) / (max - min); }
+
+function transformData(data){
+    var points = [];
+    data.forEach(function(d){
+        points.push({
+            "x": +d.vic_pos_x,
+            "y": +d.vic_pos_y
+        });
+    })
+    return points;
+}
+
 function convertCoordinates(data, currentMap, mapData, width, height){
     var resX = width;
     var resY = height;
@@ -16,18 +29,81 @@ function convertCoordinates(data, currentMap, mapData, width, height){
   }
 
 function drawPoints(data, width, height){
-    var x = d3.scale.linear().range([0, width]).domain([0,width]);
-    var y = d3.scale.linear().range([height, 0]).domain([0,height]);
+    var x = d3.scaleLinear().range([0, width]).domain([0,width]);
+    var y = d3.scaleLinear().range([height, 0]).domain([0,height]);
+    var t_data = transformData(data);
 
     var circles = svg.selectAll(".circle")
         .data(data)
         .enter().append("circle")
+        .attr("id", "circles")
         .attr("r",3) //Radius of the dot.
-        .attr("cx", function(d) { return x(d["vic_pos_x"]); }) // x-axis coordinate of the center of the element.
-        .attr("cy", function (d) { return y(d["vic_pos_y"]); }) // y-axis coordinate of the center of the element.
-        .style("fill", "red")
+        .attr("cx", function(d,j) { return x(d["vic_pos_x"]); }) // x-axis coordinate of the center of the element.
+        .attr("cy", function (d,j) { return y(d["vic_pos_y"]); }) // y-axis coordinate of the center of the element.
+        .style('fill', "red")
         .style("stroke-width", 1)
         .style("stroke", "black");
+
+
+    //DBScan. Density-based spatial clustering of applications with noise.
+    document.getElementById("dbscan").onclick = function(){
+        var dbscanner = jDBSCAN().eps(22).minPts(110).distance('EUCLIDEAN').data(t_data);
+        var point_assignment_result = dbscanner();
+
+        var hashMap = {};
+        point_assignment_result.forEach(function(d){
+            hashMap[d] = hashMap[d] ? hashMap[d] + 1 : 1; //Check if cluster exists in hashMap.
+        })
+
+        var arr = Object.values(hashMap);
+        var min = Math.min(...arr);
+        var max = Math.max(...arr);
+
+        //console.log(point_assignment_result);
+        if(document.getElementById("circles") != null){
+            d3.selectAll("circle")
+                .style('fill', function(d,j){
+                        var normValue = Math.floor(normalize(hashMap[point_assignment_result[j]], max, min));
+                        if(normValue == 0){
+                            return "red";
+                        }
+                        else{
+                            d3.select(this)
+                                .style("opacity", 0);
+                        }
+                    })
+        }  
+    }
+
+    document.getElementById("q1").onclick = function(){
+        d3.selectAll("circle")
+        .attr("cx", function(d) { 
+            if(d["vic_side"] == "CounterTerrorist"){
+            return x(d["vic_pos_x"]); 
+            }
+        }) // x-axis coordinate of the center of the element.
+        .attr("cy", function (d,j) { 
+            if(d["vic_side"] == "CounterTerrorist"){
+                return y(d["vic_pos_y"]); 
+                }
+        }) // y-axis coordinate of the center of the element.
+        .style('fill', "red");
+    }
+
+    document.getElementById("q2").onclick = function(){
+        d3.selectAll("circle")
+        .attr("cx", function(d) { 
+            if(d["vic_side"] == "Terrorist"){
+            return x(d["vic_pos_x"]); 
+            }
+        }) // x-axis coordinate of the center of the element.
+        .attr("cy", function (d) { 
+            if(d["vic_side"] == "Terrorist"){
+                return y(d["vic_pos_y"]); 
+                }
+        }) // y-axis coordinate of the center of the element.
+        .style('fill', "red");
+    }
 }
 
 function map(data, map, mapData){
@@ -39,6 +115,7 @@ function map(data, map, mapData){
     var newData = convertCoordinates(data, currentMap, mapData, width, height);
 
     svg = d3.select("div").append("svg")
+            .attr("class", "w3-animate-opacity")
             .attr("id", "canvas")
             .attr("width",  width)
             .attr("height", height);
@@ -47,28 +124,9 @@ function map(data, map, mapData){
             .attr("xlink:href", "/assets/maps/"+currentMap+".png")
             .attr("width", width)
             .attr("height", height);
+    console.log(data);
 
-    drawPoints(newData, width, height);
-      
-    function redraw(){
-        // Extract the width and height that was computed by CSS.
-        var width = d3.select("div").style("width"); //svg width
-        var height = d3.select("div").style("height"); //svg height
-
-        // Use the extracted size to set the size of an SVG element.
-        svg
-            .attr("width", width)
-            .attr("height", height);
-        
-        img 
-            .style("width", width)
-            .style("height", height);
+    document.getElementById("show_damage").onclick = function(){
+        drawPoints(newData, width, height);
     }
-
-    // Draw for the first time to initialize.
-    redraw();
-
-    // Redraw based on the new size whenever the browser window is resized.
-    window.addEventListener("resize", redraw);
-
 }
