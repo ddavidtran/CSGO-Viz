@@ -9,13 +9,14 @@ body {
     background-size: cover;
     box-sizing: border-box;
     height: 100%;
+    z-index: -1;
 }
 .map_image {
     display: inline-block;
     position: absolute;
     height: 750px;
     width: 750px;
-    right: 20%;
+    right: 2%;
     top: 15%;
     background: rgb(80, 80, 80);
 }
@@ -31,7 +32,7 @@ body {
     position: absolute;
     height: 10%;
     width: 45%;
-    right: 18%;
+    right: 1%;
     top: 2%;
     background: rgb(26, 26, 26);
     display: flex;
@@ -91,44 +92,144 @@ body {
     height: auto;
     display: inline-block;
 }
-.dropbtn {
+.btn{
+    border: 3px solid #1a1a1a;
+    display: inline-block;
+    padding: 10px;
+    position: relative;
+    text-align: center;
+    transition: background 600ms ease, color 600ms ease;
+}
+.switch {
+    position: relative;
+    margin: 5px auto;
+    width: 150px;
+    height: 40px;
+    border: 3px solid #78DAFE;
+    color: #78DAFE;
+    font-size: 15px;
+    border-radius: 2px;
+  }
+  
+  .quality {
+    position: relative;
+    display: inline-block;
+    width: 50%;
+    height: 100%;
+    line-height: 40px;
+  }
+  .quality:first-child label {
+    border-radius: 2px 0 0 2px;
+  }
+  .quality:last-child label {
+    border-radius: 0 2px 2px 0;
+  }
+  .quality label {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    text-align: center;
+    transition: transform 0.4s, color 0.4s, background-color 0.4s;
+  }
+  .quality input[type="radio"] {
+    appearance: none;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  .quality input[type="radio"]:focus {
+    outline: 0;
+    outline-offset: 0;
+  }
+  .quality input[type="radio"]:checked ~ label {
     background-color: #78DAFE;
-    color: white;
-    width: 336px;
-    padding: 16px;
-    font-size: 16px;
-    border: none;
+    color: #505050;
+  }
+  .quality input[type="radio"]:active ~ label {
+    transform: scale(1.05);
+  }
+
+
+
+
+/* The container */
+.container {
+    display: block;
+    position: relative;
+    padding-left: 35px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 22px;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* Hide the browser's default radio button */
+.container input {
+    position: absolute;
+    opacity: 0;
     cursor: pointer;
 }
 
-.dropdown {
-    position: relative;
-    display: inline-block;
-}
-
-.dropdown-content {
-    display: none;
+/* Create a custom radio button */
+.checkmark {
     position: absolute;
-    right: 0;
-    background-color: #f9f9f9;
-    width: 336px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
+    top: 0;
+    left: 0;
+    height: 25px;
+    width: 25px;
+    background-color: #eee;
+    border-radius: 50%;
 }
 
-.dropdown-content a {
-    color: black;
-    padding: 12px 16px;
-    text-decoration: none;
+/* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+    background-color: #ccc;
+}
+
+/* When the radio button is checked, add a blue background */
+.container input:checked ~ .checkmark {
+    background-color: #2196F3;
+}
+
+/* Create the indicator (the dot/circle - hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: absolute;
+    display: none;
+}
+
+/* Show the indicator (dot/circle) when checked */
+.container input:checked ~ .checkmark:after {
     display: block;
 }
 
-.dropdown-content a:hover {background-color: #f1f1f1}
-
-.dropdown:hover .dropdown-content {
-    display: block;
+/* Style the indicator (dot/circle) */
+.container .checkmark:after {
+ 	top: 9px;
+	left: 9px;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: white;
 }
 
-.dropdown:hover .dropbtn {
-    background-color: rgb(107, 194, 226);
+.round_type{
+    position: absolute;
+    padding-left: 27%;
+    padding-top: 3%;
+}
+
+input[type=text] {
+    width: 130px;
+    -webkit-transition: width 0.4s ease-in-out;
+    transition: width 0.4s ease-in-out;
+}
+.search {
+    padding-top: 3%;
 }

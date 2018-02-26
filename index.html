@@ -27,20 +27,31 @@
         <button class="button button_train" id = "de_train"> de_train</button>
     </div>
     <div class ="change_data">
-        <div class="dropdown" style="float:left;">
-            <button class="dropbtn">Filter Settings</button>
-            <div class="dropdown-content" style="left:0;">
-              <a href="#">Filter 1</a>
-              <a href="#">Filter 2</a>
-              <a href="#">Filter 3</a>
-            </div>
+        <div class='switch'><div class='quality'>
+            <input checked id='q1' name='q' type='radio' value='q1'>
+            <label for='q1'>CT</label>
+          </div><div class='quality'>
+            <input id='q2' name='q' type='radio' value='q2'>
+            <label for='q2'>T</label>
           </div>
+        </div>
+
+        <div class="round_type">
+          <h3>Round Type</h3>
+        <label class="container">Eco
+          <input type="radio" checked="checked" name="radio">
+          <span class="checkmark"></span>
+        </label>
+        <label class="container">Normal
+          <input type="radio" name="radio">
+          <span class="checkmark"></span>
+        </label>
+      
+        <div class="search">
+            <input type="text" name="search" placeholder="AWP">
+        </div>
+      </div>
     </div>
-    <div class ="filter_data">
-        <canvas id="canvas" width="310" height="290"></canvas>
-    </div>
-    <div id "map"> 
-    </div> 
     <!-- Including Bootstrap JS (with its jQuery dependency) so that dynamic components work -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
