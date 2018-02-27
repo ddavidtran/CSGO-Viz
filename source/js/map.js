@@ -1,3 +1,29 @@
+function getMax(hash_map){
+    var currMax = 0;
+    var num;
+
+    Object.keys(hash_map).forEach(function (i){
+        num = hash_map[i];
+        if(num > currMax){
+            currMax = num;
+        }
+    })
+    return currMax
+}
+
+function getMin(hash_map){
+    var currMin = Infinity;
+    var num;
+
+    Object.keys(hash_map).forEach(function (i){
+        num = hash_map[i];
+        if(num < currMin){
+            currMin = num;
+        }
+    })
+    return currMin;
+}
+
 function normalize (val, max, min) { return (val - min) / (max - min); }
 
 function transformData(data){
@@ -33,6 +59,9 @@ function drawPoints(data, width, height){
     var y = d3.scaleLinear().range([height, 0]).domain([0,height]);
     var t_data = transformData(data);
 
+    if(document.getElementById("awpDraw") != null){
+        d3.selectAll("#awpDraw").remove();
+    }
     var circles = svg.selectAll(".circle")
         .data(data)
         .enter().append("circle")
@@ -56,16 +85,17 @@ function drawPoints(data, width, height){
         point_assignment_result.forEach(function(d){
             hashMap[d] = hashMap[d] ? hashMap[d] + 1 : 1; //Check if cluster exists in hashMap.
         })
-
+        console.log(hashMap);
         var arr = Object.values(hashMap);
         var min = Math.min(...arr);
         var max = Math.max(...arr);
 
         //console.log(point_assignment_result);
+        var normValue = 0;
         if(document.getElementById("circles") != null){
             d3.selectAll("circle")
                 .style('fill', function(d,j){
-                        var normValue = Math.floor(normalize(hashMap[point_assignment_result[j]], max, min));
+                        normValue = Math.floor(normalize(hashMap[point_assignment_result[j]], max, min));
                         if(normValue == 0){
                             return "red";
                         }
@@ -106,6 +136,80 @@ function drawPoints(data, width, height){
         }) // y-axis coordinate of the center of the element.
         .style('fill', "red");
     }
+
+    document.getElementById("awp_camp").onclick = function(){
+        d3.selectAll("circle")
+        .style("display", "none");
+        //var dbscanner = jDBSCAN().eps(20).minPts(10).distance('EUCLIDEAN').data(t_data);
+
+        var dbscanner = jDBSCAN().eps(20).minPts(10).distance('EUCLIDEAN').data(t_data);
+        var point_assignment_result = dbscanner();
+
+        var newData = data;
+        newData.forEach(function(d,i){
+             d.assignment = point_assignment_result[i]; 
+        })
+
+
+        var hashMap = {};
+        newData.forEach(function(d){
+            hashMap[d.assignment] = hashMap[d.assignment] ? hashMap[d.assignment] + 1 : 1;
+        })
+
+        var min = getMin(hashMap);
+        var max = getMax(hashMap);
+
+        Object.keys(hashMap).forEach(function (i){
+            hashMap[i] = normalize(hashMap[i], max, min);
+        });
+
+        for(key in hashMap){
+            newData.forEach(function(d){
+                if(key == d.assignment){
+                    d.assignment = hashMap[key];
+                }
+            })
+        }
+
+        awp = svg.selectAll("image")
+            .data(data)
+            .enter()
+            .append("image")
+            .attr("id", "awpDraw")
+            .attr("x", function(d) { 
+                if(d["wp"] == "AWP"){
+                return x(d["att_pos_x"]); 
+                }
+            }) // x-axis coordinate of the center of the element.
+            .attr("y", function (d) { 
+                if(d["wp"] == "AWP"){
+                    return y(d["att_pos_y"]); 
+                    }
+            }) // y-axis coordinate of the center of the element.
+            .attr("width", function(d){
+                if(d.assignment < 0.6){
+                    return width = 75;
+                }
+                else if(d.assignment > 0.6 && d.assignment < 0.8){
+                    return width = 50;
+                }
+                else{
+                    return width = 25;
+                }
+            })
+            .attr("height", function(d){
+                if(d.assignment < 0.3){
+                    return height = 75;
+                }
+                else if(d.assignment > 0.5 && d.assignment < 0.8){
+                    return height = 50;
+                }
+                else{
+                    return height = 25;
+                }
+            })
+            .attr("xlink:href", "/assets/weapon/awp_icon.png");
+    }
 }
 
 function map(data, map, mapData){
@@ -117,7 +221,7 @@ function map(data, map, mapData){
 
     svg = d3.select("#map_image").append("svg")
             .attr("class", "w3-animate-opacity")
-            .attr("id", "canvas")
+            .attr("id", "map")
             .attr("width",  width)
             .attr("height", height);
     

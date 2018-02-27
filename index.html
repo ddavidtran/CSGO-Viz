@@ -28,14 +28,33 @@
         <div class="row content">
           <div class="col-sm-3 sidenav">
             <h1 class= "title">CSGO Viz</h1>
+            <p>Developed by David Tran and Oscar Nord in the course TNM048 Information Visualization.</p>
+            <hr class="style15">
+            <h3>Filters for map</h3>
                 <button type="button" class="btn btn-primary active btn-lg" id = "show_damage">Show damage</button>
+                <br>
                 <button type="button" class="btn btn-primary active btn-lg" id = "CT">Counter Terrorist</button>
+                <br>
                 <button type="button" class="btn btn-primary active btn-lg" id = "T">Terrorist</button>
+                <br>
+                <button type="button" class="btn btn-primary active btn-lg" id = "awp_camp">WHERE TO CAMP WITH AWP?!</button>
+                <br>
                 <button type="button" class="btn btn-primary active btn-lg" id = "dbscan">Density Cluster</button>
-                <p>Developed by David Tran and Oscar Nord in the course TNM048 Information Visualization.</p>
+                <hr class="style15">
+                <div class="col-sm-3 sidenav" style="height: 10%;">
+                    <h3>CHARTLMAO</h3>
+                    <div class="radio" style = "height: 100px; width: 250px;">
+                        <label><input type="radio" name="optradio">DAMAGE TAKEN PER ROUND</label>
+                        <label><input type="radio" name="optradio">DAMAGE TAKEN PER ROUND</label>
+                        <label><input type="radio" name="optradio">DAMAGE TAKEN PER ROUND</label>
+                    <div class = "map_chart">
+                      <canvas id="canvas" width="400" height="400"></canvas>
+                    </div>
+                  </div>
+          </div>
           </div>
 
-          <div class="col-sm-9 text-center">    
+          <div class="col-sm-9 text-center border-left">    
             <div class "btn-toolbar" style="margin-top: 3%">
                 <button type="button" class="btn btn-primary active btn-lg" id = "de_dust2">de_dust2</button>
                 <button type="button" class="btn btn-primary active btn-lg" id = "de_inferno">de_inferno</button>

@@ -13,7 +13,6 @@ function draw(error, mapD){
   
   var headers = document.getElementsByTagName("h2");
   if(headers != null){
-    //document.getElementsByTagName("p")[0].remove();
     for (var i = 0, l = headers.length; i < l; i++) {
       headers[i].remove()
     }
@@ -22,8 +21,8 @@ function draw(error, mapD){
     e = event || window.event;
     btn = e.target || e.srcElement;
     currentMap = String(btn.id);
-    if(document.getElementById("canvas") != null){
-      document.getElementById("canvas").remove(); //Reset canvas when changing map.
+    if(document.getElementById("map") != null){
+      document.getElementById("map").remove(); //Reset canvas when changing map.
     }
     d3.csv("source/data/mm_master_de_dust2.csv", function(d){
       map_image = new map(d, currentMap, mapD[0]);
@@ -35,7 +34,6 @@ function draw(error, mapD){
 
     var headers = document.getElementsByTagName("h2");
     if(headers != null){
-      //document.getElementsByTagName("p")[0].remove()
       for (var i = 0, l = headers.length; i < l; i++) {
         headers[i].remove()
       }
@@ -44,8 +42,8 @@ function draw(error, mapD){
     e = event || window.event;
     btn = e.target || e.srcElement;
     currentMap = String(btn.id);
-    if(document.getElementById("canvas") != null){
-      document.getElementById("canvas").remove(); //Reset canvas when changing map.
+    if(document.getElementById("map") != null){
+      document.getElementById("map").remove(); //Reset canvas when changing map.
     }    
     d3.csv("source/data/mm_master_de_inferno.csv", function(d){
       map_image = new map(d, currentMap, mapD[1]);
@@ -57,7 +55,6 @@ function draw(error, mapD){
 
   var headers = document.getElementsByTagName("h2");
   if(headers != null){
-    //document.getElementsByTagName("p")[0].remove()
     for (var i = 0, l = headers.length; i < l; i++) {
       headers[i].remove()
     }
@@ -65,8 +62,8 @@ function draw(error, mapD){
     e = event || window.event;
     btn = e.target || e.srcElement;
     currentMap = String(btn.id);
-    if(document.getElementById("canvas") != null){
-      document.getElementById("canvas").remove(); //Reset canvas when changing map.
+    if(document.getElementById("map") != null){
+      document.getElementById("map").remove(); //Reset canvas when changing map.
     }
 
     d3.csv("source/data/mm_master_de_train.csv", function(d){
@@ -75,5 +72,5 @@ function draw(error, mapD){
     })
   }
 
-   //map_chart = new chart();
+   map_chart = new chart();
 }
