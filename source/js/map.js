@@ -77,7 +77,8 @@ function drawPoints(data, width, height){
 
     //DBScan. Density-based spatial clustering of applications with noise.
     document.getElementById("dbscan").onclick = function(){
-        //var dbscanner = jDBSCAN().eps(32).minPts(102).distance('EUCLIDEAN').data(t_data);
+        document.getElementById("awp_camp").disabled = true;
+
         var dbscanner = jDBSCAN().eps(32.68).minPts(95).distance('EUCLIDEAN').data(t_data);
         var point_assignment_result = dbscanner();
 
@@ -140,8 +141,11 @@ function drawPoints(data, width, height){
     document.getElementById("awp_camp").onclick = function(){
         d3.selectAll("circle")
         .style("visibility", "hidden");
-        //var dbscanner = jDBSCAN().eps(20).minPts(10).distance('EUCLIDEAN').data(t_data);
 
+        document.getElementById("dbscan").disabled = true;
+        document.getElementById("CT").disabled = true;
+        document.getElementById("T").disabled = true;
+        
         var dbscanner = jDBSCAN().eps(20).minPts(10).distance('EUCLIDEAN').data(t_data);
         var point_assignment_result = dbscanner();
 
@@ -187,7 +191,7 @@ function drawPoints(data, width, height){
                     }
             }) // y-axis coordinate of the center of the element.
             .attr("width", function(d){
-                if(d.assignment < 0.6){
+                if(d.assignment < 0.3){
                     return width = 75;
                 }
                 else if(d.assignment > 0.6 && d.assignment < 0.8){
@@ -231,6 +235,11 @@ function map(data, map, mapData){
             .attr("height", height);
 
     document.getElementById("show_damage").onclick = function(){
+        document.getElementById("CT").removeAttribute("disabled");
+        document.getElementById("T").removeAttribute("disabled");
+        document.getElementById("dbscan").removeAttribute("disabled");
+        document.getElementById("awp_camp").removeAttribute("disabled");
+
         drawPoints(newData, width, height);
     }
 }
