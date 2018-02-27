@@ -42,12 +42,14 @@ function drawPoints(data, width, height){
         .attr("cy", function (d,j) { return y(d["vic_pos_y"]); }) // y-axis coordinate of the center of the element.
         .style('fill', "red")
         .style("stroke-width", 1)
-        .style("stroke", "black");
+        .style("stroke", "black")
+
 
 
     //DBScan. Density-based spatial clustering of applications with noise.
     document.getElementById("dbscan").onclick = function(){
-        var dbscanner = jDBSCAN().eps(22).minPts(110).distance('EUCLIDEAN').data(t_data);
+        //var dbscanner = jDBSCAN().eps(32).minPts(102).distance('EUCLIDEAN').data(t_data);
+        var dbscanner = jDBSCAN().eps(32.68).minPts(95).distance('EUCLIDEAN').data(t_data);
         var point_assignment_result = dbscanner();
 
         var hashMap = {};
@@ -75,7 +77,7 @@ function drawPoints(data, width, height){
         }  
     }
 
-    document.getElementById("q1").onclick = function(){
+    document.getElementById("CT").onclick = function(){
         d3.selectAll("circle")
         .attr("cx", function(d) { 
             if(d["vic_side"] == "CounterTerrorist"){
@@ -90,7 +92,7 @@ function drawPoints(data, width, height){
         .style('fill', "red");
     }
 
-    document.getElementById("q2").onclick = function(){
+    document.getElementById("T").onclick = function(){
         d3.selectAll("circle")
         .attr("cx", function(d) { 
             if(d["vic_side"] == "Terrorist"){
@@ -109,12 +111,11 @@ function drawPoints(data, width, height){
 function map(data, map, mapData){
     //Current CSGO map
     var currentMap = map;
-    var div = "#map_image";
-    var width = parseFloat(d3.select("div").style("width"));  //svg width
-    var height = parseFloat(d3.select("div").style("height"));  //svg height
+    var width = parseFloat(d3.select("#map_image").style("width"));  //svg width
+    var height = parseFloat(d3.select("#map_image").style("height"));  //svg height
     var newData = convertCoordinates(data, currentMap, mapData, width, height);
 
-    svg = d3.select("div").append("svg")
+    svg = d3.select("#map_image").append("svg")
             .attr("class", "w3-animate-opacity")
             .attr("id", "canvas")
             .attr("width",  width)
@@ -124,7 +125,6 @@ function map(data, map, mapData){
             .attr("xlink:href", "/assets/maps/"+currentMap+".png")
             .attr("width", width)
             .attr("height", height);
-    console.log(data);
 
     document.getElementById("show_damage").onclick = function(){
         drawPoints(newData, width, height);

@@ -10,6 +10,15 @@ var currentMap;
 function draw(error, mapD){
   if (error) throw error;
   document.getElementById("de_dust2").onclick = function(event){ //If de_dust2 map is selected.
+  
+  var headers = document.getElementsByTagName("h2");
+  if(headers != null){
+    //document.getElementsByTagName("p")[0].remove();
+    for (var i = 0, l = headers.length; i < l; i++) {
+      headers[i].remove()
+    }
+  }
+      
     e = event || window.event;
     btn = e.target || e.srcElement;
     currentMap = String(btn.id);
@@ -23,6 +32,15 @@ function draw(error, mapD){
   }
 
   document.getElementById("de_inferno").onclick = function(event){ //If de_inferno map is selected.
+
+    var headers = document.getElementsByTagName("h2");
+    if(headers != null){
+      //document.getElementsByTagName("p")[0].remove()
+      for (var i = 0, l = headers.length; i < l; i++) {
+        headers[i].remove()
+      }
+    }
+
     e = event || window.event;
     btn = e.target || e.srcElement;
     currentMap = String(btn.id);
@@ -36,6 +54,14 @@ function draw(error, mapD){
   }
 
   document.getElementById("de_train").onclick = function(event){ //If de_train is selected
+
+  var headers = document.getElementsByTagName("h2");
+  if(headers != null){
+    //document.getElementsByTagName("p")[0].remove()
+    for (var i = 0, l = headers.length; i < l; i++) {
+      headers[i].remove()
+    }
+  }
     e = event || window.event;
     btn = e.target || e.srcElement;
     currentMap = String(btn.id);
