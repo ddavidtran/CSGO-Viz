@@ -85,7 +85,6 @@ function drawPoints(data, width, height){
         point_assignment_result.forEach(function(d){
             hashMap[d] = hashMap[d] ? hashMap[d] + 1 : 1; //Check if cluster exists in hashMap.
         })
-        console.log(hashMap);
         var arr = Object.values(hashMap);
         var min = Math.min(...arr);
         var max = Math.max(...arr);
@@ -94,6 +93,7 @@ function drawPoints(data, width, height){
         var normValue = 0;
         if(document.getElementById("circles") != null){
             d3.selectAll("circle")
+                .style("visibility", "visible")
                 .style('fill', function(d,j){
                         normValue = Math.floor(normalize(hashMap[point_assignment_result[j]], max, min));
                         if(normValue == 0){
@@ -139,7 +139,7 @@ function drawPoints(data, width, height){
 
     document.getElementById("awp_camp").onclick = function(){
         d3.selectAll("circle")
-        .style("display", "none");
+        .style("visibility", "hidden");
         //var dbscanner = jDBSCAN().eps(20).minPts(10).distance('EUCLIDEAN').data(t_data);
 
         var dbscanner = jDBSCAN().eps(20).minPts(10).distance('EUCLIDEAN').data(t_data);
