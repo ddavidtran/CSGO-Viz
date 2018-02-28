@@ -208,7 +208,7 @@ function drawPoints(data, width, height){
                     return height = 25;
                 }
             })
-            .attr("xlink:href", "/assets/weapon/awp_icon.png");
+            .attr("xlink:href", "./assets/weapon/awp_icon.png");
     }
 }
 
@@ -226,7 +226,7 @@ function map(data, map, mapData){
             .attr("height", height);
     
     var img = svg.append("image")
-            .attr("xlink:href", "/assets/maps/"+currentMap+".png")
+            .attr("xlink:href", "./assets/maps/"+currentMap+".png")
             .attr("width", width)
             .attr("height", height);
 
