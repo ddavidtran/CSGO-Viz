@@ -13,7 +13,9 @@ body {
 }
 
 /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
-.row.content {height: 1200px;}
+.row.content {
+    height: 100%;
+}
 
 /* Set gray background color and 100% height */
 .sidenav {
@@ -21,15 +23,26 @@ body {
     height: 100%;
 }
 
+#question {
+    position: absolute; 
+    bottom: 0; 
+    right: 0; 
+    font-size: 60px; 
+    margin-bottom: 2%; 
+    margin-right: 2%;
+}
+
 .center-block {
     display: inline-block;
     position: cover;
     /* margin-top: 2%; */
-    height: 1024px;
-    width: 1024px;
+    height: 750px;
+    width: 750px;
     background: rgb(80, 80, 80);
  }
-
+.placeholder {
+   /* margin-right: 50%; */
+}
  .modal-content{
     background: rgb(26, 26, 26);
  }

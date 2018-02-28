@@ -15,13 +15,11 @@ function draw(error, mapD){
     document.getElementById("dbscan").disabled = true;
     document.getElementById("awp_camp").disabled = true;
 
-  var headers = document.getElementsByTagName("h2");
-  if(headers != null){
-    for (var i = 0, l = headers.length; i < l; i++) {
-      headers[i].remove()
+    var placeholderText = document.getElementById("placeholder");
+    if(placeholderText != null){
+      placeholderText.remove();
     }
-  }
-      
+    
     e = event || window.event;
     btn = e.target || e.srcElement;
     currentMap = String(btn.id);
@@ -44,11 +42,9 @@ function draw(error, mapD){
     document.getElementById("dbscan").disabled = true;
     document.getElementById("awp_camp").disabled = true;
 
-    var headers = document.getElementsByTagName("h2");
-    if(headers != null){
-      for (var i = 0, l = headers.length; i < l; i++) {
-        headers[i].remove()
-      }
+    var placeholderText = document.getElementById("placeholder");
+    if(placeholderText != null){
+      placeholderText.remove();
     }
 
     e = event || window.event;
@@ -69,11 +65,9 @@ function draw(error, mapD){
     document.getElementById("dbscan").disabled = true;
     document.getElementById("awp_camp").disabled = true;
 
-  var headers = document.getElementsByTagName("h2");
-  if(headers != null){
-    for (var i = 0, l = headers.length; i < l; i++) {
-      headers[i].remove()
-    }
+  var placeholderText = document.getElementById("placeholder");
+  if(placeholderText != null){
+    placeholderText.remove();
   }
     e = event || window.event;
     btn = e.target || e.srcElement;
