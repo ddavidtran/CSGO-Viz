@@ -36,8 +36,8 @@ body {
     display: inline-block;
     position: cover;
     /* margin-top: 2%; */
-    height: 750px;
-    width: 750px;
+    height: 1024px;
+    width: 1024px;
     background: rgb(80, 80, 80);
  }
 .placeholder {
