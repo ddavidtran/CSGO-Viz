@@ -131,7 +131,7 @@ hr.style15:after {
 	font-size: 18px;
 }
 
-.map_chart {
+#map_chart {
     position: absolute;
 }
 .fill { 

@@ -23,14 +23,15 @@ function draw(error, mapD){
     if(document.getElementById("map") != null){
       document.getElementById("map").remove(); //Reset canvas when changing map.
     }
-    d3.csv("source/data/mm_master_de_dust2.csv", function(d){
+
+    d3.csv("./source/data/mm_master_de_dust2.csv", function(d){
       map_image = new map(d, currentMap, mapD[0]);
-      //dataMining = new dataMining(d, currentMap, mapD[0]);
     })
 
-    d3.json("/source/data/de_dust2.json", function(data) {
-      //map_chart = new chart(data);
+    d3.json("./source/data/de_dust2.json", function(data) {
+      map_chart = new chart(data);
     });
+  
   }
 
   document.getElementById("de_inferno").onclick = function(event){ //If de_inferno map is selected.
@@ -47,10 +48,13 @@ function draw(error, mapD){
     if(document.getElementById("map") != null){
       document.getElementById("map").remove(); //Reset canvas when changing map.
     }    
-    d3.csv("source/data/mm_master_de_inferno.csv", function(d){
+    d3.csv("./source/data/mm_master_de_inferno.csv", function(d){
       map_image = new map(d, currentMap, mapD[1]);
-      //dataMining = new dataMining(d, currentMap, mapD[1]);
     })
+
+    d3.json("./source/data/de_inferno.json", function(data) {
+      map_chart = new chart(data);
+    });
   }
 
   document.getElementById("de_train").onclick = function(event){ //If de_train is selected
@@ -67,10 +71,13 @@ function draw(error, mapD){
       document.getElementById("map").remove(); //Reset canvas when changing map.
     }
 
-    d3.csv("source/data/mm_master_de_train.csv", function(d){
+    d3.csv("./source/data/mm_master_de_train.csv", function(d){
       map_image = new map(d, currentMap, mapD[2]);
       //dataMining = new dataMining(d, currentMap, mapD[2]);
     })
+    d3.json("./source/data/de_train.json", function(data) {
+      map_chart = new chart(data);
+    });
   }
 
 }

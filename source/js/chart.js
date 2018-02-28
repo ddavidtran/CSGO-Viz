@@ -1,38 +1,54 @@
-function chart() {
-    var jsonfile = {
+
+function showWinSide(data){
+    var ctWins = 0;
+    var tWins = 0;
+    data.map(function(d){
+        if(d.winner_side == "Terrorist"){
+            tWins++;
+        }
+        else{
+            ctWins++;
+        }
+    })
+
+    var jsonFormat = {
         "jsonarray": [{
-            "name": "Hej",
-            "age": 120
+            "team": "Counter-Terrorist",
+            "wins": ctWins
             }, {
-            "name": "Hej",
-            "age": 50
-            },
-            {
-            "name": "Hej",
-            "age": 130
+            "team": "Terrorist",
+            "wins": tWins
             }]
-        }; 
-    //TODO: Set to auto read current map json and plot data
-    //auto set labels and data 
-    var labels = jsonfile.jsonarray.map(function(e) {
-        return e.name;
+    }
+    return jsonFormat;
+}
+
+
+
+function chart(data) {
+
+    var newData = showWinSide(data);
+
+    var labels = newData.jsonarray.map(function(e) {
+        return e.team;
     });
-    var data = jsonfile.jsonarray.map(function(e) {
-        return e.age;
+    var data = newData.jsonarray.map(function(e) {
+        return e.wins;
     });
+
     var ctx = canvas.getContext('2d');
-    var config = {
-    pointDotRadius: 3,
-    type: 'line',
+    var config = {    
+        type: 'bar',
     data: {
         labels: labels,
         datasets: [{
-            label: 'Grafens graf',
+            label: 'Winning side',
             data: data,
             backgroundColor: 'rgba(120, 218, 254, 255)'
         }]
     },
     options: {
+
         elements: {
             line: {
             tension: 0
@@ -60,5 +76,5 @@ function chart() {
         }
     }
 };
-var chart = new Chart(ctx, config);
+    var chart = new Chart(ctx, config);
 }
