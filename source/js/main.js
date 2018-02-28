@@ -7,12 +7,15 @@ var map_chart;
 var map_image;
 var currentMap;
 
-function draw(error, mapD){
-  
+function draw(error, mapD){  
   if (error) throw error;
   document.getElementById("de_dust2").onclick = function(event){ //If de_dust2 map is selected.
     document.getElementById("show_damage").removeAttribute("disabled");
-
+    document.getElementById("awp_camp").disabled = true;
+    document.getElementById("dbscan").disabled = true;
+    document.getElementById("CT").disabled = true;
+    document.getElementById("T").disabled = true;
+    
     var placeholderText = document.getElementById("placeholder");
     if(placeholderText != null){
       placeholderText.remove();
@@ -37,6 +40,10 @@ function draw(error, mapD){
 
   document.getElementById("de_inferno").onclick = function(event){ //If de_inferno map is selected.
     document.getElementById("show_damage").removeAttribute("disabled");
+    document.getElementById("awp_camp").disabled = true;
+    document.getElementById("dbscan").disabled = true;
+    document.getElementById("CT").disabled = true;
+    document.getElementById("T").disabled = true;
 
     var placeholderText = document.getElementById("placeholder");
     if(placeholderText != null){
@@ -61,6 +68,10 @@ function draw(error, mapD){
 
   document.getElementById("de_train").onclick = function(event){ //If de_train is selected
     document.getElementById("show_damage").removeAttribute("disabled");
+    document.getElementById("awp_camp").disabled = true;
+    document.getElementById("dbscan").disabled = true;
+    document.getElementById("CT").disabled = true;
+    document.getElementById("T").disabled = true;
 
   var placeholderText = document.getElementById("placeholder");
   if(placeholderText != null){

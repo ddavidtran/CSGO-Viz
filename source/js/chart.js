@@ -22,6 +22,30 @@ function showWinSide(data){
     return jsonFormat;
 }
 
+function mostPlantedSites(data){
+    var A = 0;
+    var B = 0;
+    data.map(function(d){
+        if(d.bomb_site == "A"){
+            A++;
+        }
+        else{
+            B++;
+        }
+    })
+
+    var jsonFormat = {
+        "jsonarray": [{
+            "team": "A",
+            "wins": A
+            }, {
+            "team": "B",
+            "wins": B
+            }]
+    }
+    return jsonFormat;
+}
+
 var barChart = null; 
 
 function chart(data) {
@@ -29,6 +53,7 @@ function chart(data) {
     if(barChart) {
         barChart.destroy();
     }
+    
     var newData = showWinSide(data);
 
     var labels = newData.jsonarray.map(function(e) {
@@ -43,14 +68,17 @@ function chart(data) {
         type: 'bar',
     data: {
         labels: labels,
+        data: data,
         datasets: [{
-            label: 'Winning side',
+            label: 'Wins',
             data: data,
             backgroundColor: 'rgba(120, 218, 254, 255)'
         }]
     },
     options: {
-
+        legend:{
+            display: false,
+        },
         elements: {
             line: {
             tension: 0
@@ -71,7 +99,9 @@ function chart(data) {
                     display: false,
                 },
                 ticks: {
+                    fontSize: 16,
                     beginAtZero:true,
+                    fontColor: "white",
                 },
                 bezierCurve: false
             }]

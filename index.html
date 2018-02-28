@@ -46,14 +46,17 @@
                 <hr class="style15">
                 <div class="col-sm-3 sidenav" style="height: 10%;">
                     <h3>CHARTLMAO</h3>
-                    <div class="radio" style = "height: 100px; width: 250px;">
-                        <label><input type="radio" name="optradio">DAMAGE TAKEN PER ROUND</label>
-                        <label><input type="radio" name="optradio">DAMAGE TAKEN PER ROUND</label>
-                        <label><input type="radio" name="optradio">DAMAGE TAKEN PER ROUND</label>
-                    <div id = "map_chart">
+                    <div class="btn-group" data-toggle="buttons" layout="row">
+                        <label class="btn btn-primary active">
+                            <input type="radio" name="options" id="option1" autocomplete="off" checked> Winning Side
+                          </label>
+                          <label class="btn btn-primary">
+                            <input type="radio" name="options" id="option2" autocomplete="off"> Best Bomb Site
+                          </label>
+                  </div>
+                  <div id = "map_chart">
                       <canvas id="canvas" width="400px" height="400px"></canvas>
                     </div>
-                  </div>
           </div>
           </div>
 
