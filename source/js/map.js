@@ -65,10 +65,10 @@ function drawPoints(data, width, height){
     var circles = svg.selectAll(".circle")
         .data(data)
         .enter().append("circle")
-        .attr("id", "circles")
+        .attr("id", "circle")
         .attr("r",3) //Radius of the dot.
-        .attr("cx", function(d,j) { return x(d["vic_pos_x"]); }) // x-axis coordinate of the center of the element.
-        .attr("cy", function (d,j) { return y(d["vic_pos_y"]); }) // y-axis coordinate of the center of the element.
+        .attr("cx", function(d) { return x(d["vic_pos_x"]); }) // x-axis coordinate of the center of the element.
+        .attr("cy", function (d) { return y(d["vic_pos_y"]); }) // y-axis coordinate of the center of the element.
         .style('fill', "red")
         .style("stroke-width", 1)
         .style("stroke", "black")
@@ -92,7 +92,7 @@ function drawPoints(data, width, height){
 
         //console.log(point_assignment_result);
         var normValue = 0;
-        if(document.getElementById("circles") != null){
+        if(document.getElementById("circle") != null){
             d3.selectAll("circle")
                 .style("visibility", "visible")
                 .style('fill', function(d,j){
@@ -100,10 +100,8 @@ function drawPoints(data, width, height){
                         if(normValue == 0){
                             return "red";
                         }
-                        else{
-                            d3.select(this)
-                                .style("opacity", 0);
-                        }
+                        else
+                            d3.select(this).remove();
                     })
         }  
     }
@@ -120,7 +118,6 @@ function drawPoints(data, width, height){
                 return y(d["vic_pos_y"]); 
                 }
         }) // y-axis coordinate of the center of the element.
-        .style('fill', "red");
     }
 
     document.getElementById("T").onclick = function(){
@@ -135,7 +132,6 @@ function drawPoints(data, width, height){
                 return y(d["vic_pos_y"]); 
                 }
         }) // y-axis coordinate of the center of the element.
-        .style('fill', "red");
     }
 
     document.getElementById("awp_camp").onclick = function(){
@@ -224,7 +220,7 @@ function map(data, map, mapData){
     var newData = convertCoordinates(data, currentMap, mapData, width, height);
 
     svg = d3.select("#map_image").append("svg")
-            .attr("class", "w3-animate-opacity")
+            .attr("class", "w3-animate-opacity img-thumbnail")
             .attr("id", "map")
             .attr("width",  width)
             .attr("height", height);
@@ -233,6 +229,7 @@ function map(data, map, mapData){
             .attr("xlink:href", "/assets/maps/"+currentMap+".png")
             .attr("width", width)
             .attr("height", height);
+
 
     document.getElementById("show_damage").onclick = function(){
         document.getElementById("CT").removeAttribute("disabled");

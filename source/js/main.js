@@ -32,6 +32,10 @@ function draw(error, mapD){
       map_image = new map(d, currentMap, mapD[0]);
       //dataMining = new dataMining(d, currentMap, mapD[0]);
     })
+
+    d3.json("/source/data/de_dust2.json", function(data) {
+      //map_chart = new chart(data);
+    });
   }
 
   document.getElementById("de_inferno").onclick = function(event){ //If de_inferno map is selected.
@@ -84,5 +88,4 @@ function draw(error, mapD){
     })
   }
 
-   map_chart = new chart();
 }
