@@ -30,6 +30,9 @@ body {
     background: rgb(80, 80, 80);
  }
 
+ .modal-content{
+    background: rgb(26, 26, 26);
+ }
 
 /* Style buttons as link */
 .btn-link:focus,
