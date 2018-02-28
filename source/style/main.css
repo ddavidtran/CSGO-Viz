@@ -23,6 +23,11 @@ body {
     height: 100%;
 }
 
+canvas {
+    display:block;
+    margin:0 auto;
+}
+
 #question {
     position: absolute; 
     bottom: 0; 
@@ -40,9 +45,7 @@ body {
     width: 1024px;
     background: rgb(80, 80, 80);
  }
-.placeholder {
-   /* margin-right: 50%; */
-}
+
  .modal-content{
     background: rgb(26, 26, 26);
  }

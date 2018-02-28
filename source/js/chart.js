@@ -1,4 +1,3 @@
-
 function showWinSide(data){
     var ctWins = 0;
     var tWins = 0;
@@ -23,10 +22,13 @@ function showWinSide(data){
     return jsonFormat;
 }
 
-
+var barChart = null; 
 
 function chart(data) {
-
+    //Clear chart if not null
+    if(barChart) {
+        barChart.destroy();
+    }
     var newData = showWinSide(data);
 
     var labels = newData.jsonarray.map(function(e) {
@@ -75,6 +77,6 @@ function chart(data) {
             }]
         }
     }
-};
-    var chart = new Chart(ctx, config);
+};  
+    barChart = new Chart(ctx, config);
 }

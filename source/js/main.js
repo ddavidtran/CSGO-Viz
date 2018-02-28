@@ -8,6 +8,7 @@ var map_image;
 var currentMap;
 
 function draw(error, mapD){
+  
   if (error) throw error;
   document.getElementById("de_dust2").onclick = function(event){ //If de_dust2 map is selected.
     document.getElementById("show_damage").removeAttribute("disabled");
@@ -54,6 +55,7 @@ function draw(error, mapD){
 
     d3.json("./source/data/de_inferno.json", function(data) {
       map_chart = new chart(data);
+
     });
   }
 
