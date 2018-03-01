@@ -9,24 +9,24 @@ html,body {
     background-size: cover;
     box-sizing: border-box;
     z-index: -1;
-    zoom: 0.82; /* Other non-webkit browsers */
+    zoom: 0.82; /* Non-webkit browsers */
     zoom: 82%; /* Webkit browsers */
     height: 100%;
 }
 
-/* Fix for zoom in Firefox */
+/* "Fix" (or not) for zoom in Firefox 
 @-moz-document url-prefix() {
     html,body {
         transform: scale(0.88) translate(-6.5%, -6%);
     }
-}
+} */
 
-/* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+/* Set height of the grid so .sidenav can be 100% */
 .row.content {
     height: 100%;
 }
 
-/* Set gray background color and 100% height */
+/* Set grey background color and 100% height */
 .sidenav {
     background-color: #1A1A1A;
     height: 100%;
@@ -72,7 +72,7 @@ canvas {
     text-decoration:underline;
 }
 
- .btn {
+.btn {
     padding: 10px 24px;
     border: 0 none;
     font-weight: 600;
@@ -80,6 +80,7 @@ canvas {
     text-transform: uppercase;
     background: #5f5f5f;
 }
+
 .btn:focus, .btn:active:focus, .btn.active:focus {
     outline: 0 none;
 }
@@ -126,13 +127,12 @@ h2{
     min-height: 70%;
 }
 
-
-
 hr.style15 {
 	border-left: 1px dotted #505050;
     /* border-left: 4px double #8c8b8b; */
 	text-align: center;
 }
+
 hr.style15:after {
 	display: inline-block;
 	position: relative;
@@ -154,67 +154,4 @@ hr.style15:after {
 .center-block {
     text-align: left;
     padding: 0%
-}
-
-
-.card {
-    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-    background: rgb(146, 146, 146);
-  
-}
-.card {
-    margin-top: 100px;
-    box-sizing: border-box;
-    border-radius: 5px;
-    background-clip: padding-box;
-}
-.card span.card-title {
-      color: #fff;
-      font-size: 24px;
-      font-weight: 300;
-      text-transform: uppercase;
-}
-  
-.card .card-image {
-    position: relative;
-    overflow: hidden;
-}
-.card .card-image img {
-    border-radius: 2px 2px 0 0;
-    background-clip: padding-box;
-    position: relative;
-    z-index: -1;
-}
-.card .card-image span.card-title {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    padding: 16px;
-}
-.card .card-content {
-    padding: 16px;
-    border-radius: 0 0 2px 2px;
-    background-clip: padding-box;
-    box-sizing: border-box;
-}
-.card .card-content p {
-    margin: 0;
-    color: inherit;
-}
-.card .card-content span.card-title {
-    line-height: 48px;
-}
-.card .card-action {
-    border-top: 1px solid rgba(160, 160, 160, 0.2);
-    padding: 16px;
-}
-.card .card-action a {
-    color: #ffab40;
-    margin-right: 16px;
-    transition: color 0.3s ease;
-    text-transform: uppercase;
-}
-.card .card-action a:hover {
-    color: #ffd8a6;
-    text-decoration: none;
 }
