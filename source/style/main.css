@@ -14,9 +14,10 @@ html,body {
     height: 100%;
 }
 
+/* Fix for zoom in Firefox */
 @-moz-document url-prefix() {
     html,body {
-        transform: scale(0.88);
+        transform: scale(0.88) translate(-6.5%, -6%);
     }
 }
 
