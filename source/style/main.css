@@ -1,4 +1,4 @@
-body {
+html,body {
     font-family: 'eurofurence',Helvetica,Arial,sans-serif;
     color: #f3f3f3;
     font-size: 14px;        
@@ -8,8 +8,12 @@ body {
     -o-background-size: cover;
     background-size: cover;
     box-sizing: border-box;
-    height: 100%;
     z-index: -1;
+        /*-moz-transform: scale(0.9);
+    /*-moz-transform: scale(0.67,0.67); /* Moz-browsers */
+    zoom: 0.67; /* Other non-webkit browsers */
+    zoom: 67%; /* Webkit browsers */
+    height: 100%;
 }
 
 /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
