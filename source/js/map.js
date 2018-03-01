@@ -38,7 +38,7 @@ function drawDBSCAN(data){
     var max = Math.max(...arr);
 
     var normValue = 0;
-    if(document.getElementById("circle") != null){
+    if(document.getElementById("circle") != null) {
         d3.selectAll("circle")
             .style("visibility", "visible")
             .style('fill', function(d,j){
@@ -52,7 +52,7 @@ function drawDBSCAN(data){
     }  
 }
 
-function filterCT(x,y){
+function filterCT(x,y) {
     document.getElementById("reset").removeAttribute("disabled");
 
     d3.selectAll("circle")
@@ -68,7 +68,7 @@ function filterCT(x,y){
     }) 
 }
 
-function filterT(x,y){
+function filterT(x,y) {
     document.getElementById("reset").removeAttribute("disabled");
 
     d3.selectAll("circle")
@@ -84,7 +84,7 @@ function filterT(x,y){
     }) 
 }
 
-function filterByAWPCamp(x, y, t_data, data){
+function filterByAWPCamp(x, y, t_data, data) {
     document.getElementById("reset").removeAttribute("disabled");
 
     d3.selectAll("circle")
@@ -98,13 +98,13 @@ function filterByAWPCamp(x, y, t_data, data){
     var point_assignment_result = dbscanner();
 
     var newData = data;
-    newData.forEach(function(d,i){
+    newData.forEach(function(d,i) {
          d.assignment = point_assignment_result[i]; 
     })
 
 
     var hashMap = {};
-    newData.forEach(function(d){
+    newData.forEach(function(d) {
         hashMap[d.assignment] = hashMap[d.assignment] ? hashMap[d.assignment] + 1 : 1;
     })
 
@@ -115,7 +115,7 @@ function filterByAWPCamp(x, y, t_data, data){
         hashMap[i] = normalize(hashMap[i], max, min);
     });
 
-    for(key in hashMap){
+    for(key in hashMap) {
         newData.forEach(function(d){
             if(key == d.assignment){
                 d.assignment = hashMap[key];
@@ -129,34 +129,34 @@ function filterByAWPCamp(x, y, t_data, data){
         .append("image")
         .attr("id", "awpDraw")
         .attr("x", function(d) { 
-            if(d["wp"] == "AWP"){
-            return x(d["att_pos_x"]); 
+            if(d["wp"] == "AWP") {
+                return x(d["att_pos_x"]); 
             }
         }) // x-axis coordinate of the center of the element.
         .attr("y", function (d) { 
-            if(d["wp"] == "AWP"){
+            if(d["wp"] == "AWP") {
                 return y(d["att_pos_y"]); 
-                }
+            }
         }) // y-axis coordinate of the center of the element.
-        .attr("width", function(d){
+        .attr("width", function(d) {
             if(d.assignment < 0.3){
                 return width = 75;
             }
-            else if(d.assignment > 0.6 && d.assignment < 0.8){
+            else if(d.assignment > 0.6 && d.assignment < 0.8) {
                 return width = 50;
             }
-            else{
+            else {
                 return width = 25;
             }
         })
-        .attr("height", function(d){
+        .attr("height", function(d) {
             if(d.assignment < 0.3){
                 return height = 75;
             }
-            else if(d.assignment > 0.5 && d.assignment < 0.8){
+            else if(d.assignment > 0.5 && d.assignment < 0.8) {
                 return height = 50;
             }
-            else{
+            else {
                 return height = 25;
             }
         })
@@ -164,26 +164,26 @@ function filterByAWPCamp(x, y, t_data, data){
 }
 
 
-function getMax(hash_map){
+function getMax(hash_map) {
     var currMax = 0;
     var num;
 
-    Object.keys(hash_map).forEach(function (i){
+    Object.keys(hash_map).forEach(function (i) { 
         num = hash_map[i];
-        if(num > currMax){
+        if(num > currMax) {
             currMax = num;
         }
     })
     return currMax
 }
 
-function getMin(hash_map){
+function getMin(hash_map) {
     var currMin = Infinity;
     var num;
 
-    Object.keys(hash_map).forEach(function (i){
+    Object.keys(hash_map).forEach(function (i) {
         num = hash_map[i];
-        if(num < currMin){
+        if(num < currMin) {
             currMin = num;
         }
     })
@@ -194,9 +194,9 @@ function normalize (val, max, min) {
     return (val - min) / (max - min); 
 }
 
-function transformData(data){
+function transformData(data) {
     var points = [];
-    data.forEach(function(d){
+    data.forEach(function(d) {
         points.push({
             "x": +d.vic_pos_x,
             "y": +d.vic_pos_y
@@ -205,12 +205,12 @@ function transformData(data){
     return points;
 }
 
-function convertCoordinates(data, currentMap, mapData, width, height){
+function convertCoordinates(data, currentMap, mapData, width, height) {
     var resX = width;
     var resY = height;
     var newData = data;
     var i = 0;
-    newData.forEach(function(d){
+    newData.forEach(function(d) {
         if(mapData.map == d.map && mapData.map == currentMap){
             d.att_pos_x = parseFloat(resX * ( (d.att_pos_x - mapData.StartX) / (mapData.EndX - mapData.StartX)));
             d.att_pos_y = parseFloat(resY * ( (d.att_pos_y - mapData.StartY) / (mapData.EndY - mapData.StartY)));
@@ -222,12 +222,12 @@ function convertCoordinates(data, currentMap, mapData, width, height){
     return newData;
   }
 
-function drawPoints(data, width, height){
+function drawPoints(data, width, height) {
     var x = d3.scaleLinear().range([0, width]).domain([0,width]);
     var y = d3.scaleLinear().range([height, 0]).domain([0,height]);
     var t_data = transformData(data);
 
-    if(document.getElementById("awpDraw") != null){
+    if(document.getElementById("awpDraw") != null) {
         d3.selectAll("#awpDraw").remove();
     }
     var circles = svg.selectAll(".circle")
@@ -242,24 +242,24 @@ function drawPoints(data, width, height){
         .style("stroke", "black")
 
     //DBScan. Density-based spatial clustering of applications with noise.
-    document.getElementById("dbscan").onclick = function(){
+    document.getElementById("dbscan").onclick = function() {
         drawDBSCAN(t_data);
     }
 
-    document.getElementById("CT").onclick = function(){
+    document.getElementById("CT").onclick = function() {
         filterCT(x,y);
     }
 
-    document.getElementById("T").onclick = function(){
+    document.getElementById("T").onclick = function() {
         filterT(x,y);
     }
 
-    document.getElementById("awp_camp").onclick = function(){
+    document.getElementById("awp_camp").onclick = function() {
         filterByAWPCamp(x,y, t_data, data);
     }
 }
 
-function map(data, map, mapData){
+function map(data, map, mapData) {
     //Current CSGO map
     var currentMap = map;
     var width = parseFloat(d3.select("#map_image").style("width"));  //svg width

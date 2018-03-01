@@ -16,7 +16,7 @@ var map_chart;
 var map_image;
 var currentMap;
 
-function resetButtonAttributes(){
+function resetButtonAttributes() {
   document.getElementById("reset").disabled = true;
   document.getElementById("CT").removeAttribute("disabled");
   document.getElementById("T").removeAttribute("disabled");
@@ -26,10 +26,10 @@ function resetButtonAttributes(){
   document.getElementById("bomb").removeAttribute("disabled");
 }
 
-function draw_de_dust2(mapD){
+function draw_de_dust2(mapD) {
     resetButtonAttributes();
     var placeholderText = document.getElementById("placeholder");
-    if(placeholderText != null){
+    if(placeholderText != null) {
       placeholderText.remove();
     }
     
@@ -37,11 +37,11 @@ function draw_de_dust2(mapD){
     btn = e.target || e.srcElement;
     currentMap = String(btn.id);
 
-    if(document.getElementById("map") != null){
+    if(document.getElementById("map") != null) {
       document.getElementById("map").remove(); //Reset canvas when changing map.
     }
 
-    d3.csv("./source/data/mm_master_de_dust2.csv", function(d){
+    d3.csv("./source/data/mm_master_de_dust2.csv", function(d) {
       map_image = new map(d, currentMap, mapD[0]);
     })
 
@@ -50,7 +50,7 @@ function draw_de_dust2(mapD){
     });
 }
 
-function draw_de_inferno(mapD){
+function draw_de_inferno(mapD) {
     resetButtonAttributes();
 
     var placeholderText = document.getElementById("placeholder");
@@ -62,10 +62,10 @@ function draw_de_inferno(mapD){
     btn = e.target || e.srcElement;
     currentMap = String(btn.id);
 
-    if(document.getElementById("map") != null){
+    if(document.getElementById("map") != null) {
       document.getElementById("map").remove(); //Reset canvas when changing map.
     }    
-    d3.csv("./source/data/mm_master_de_inferno.csv", function(d){
+    d3.csv("./source/data/mm_master_de_inferno.csv", function(d) {
       map_image = new map(d, currentMap, mapD[1]);
     })
 
@@ -74,11 +74,12 @@ function draw_de_inferno(mapD){
     });
 }
 
-function draw_de_train(mapD){
+function draw_de_train(mapD) {
     resetButtonAttributes();
 
     var placeholderText = document.getElementById("placeholder");
-    if(placeholderText != null){
+    
+    if(placeholderText != null) {
       placeholderText.remove();
     }
 
@@ -86,11 +87,11 @@ function draw_de_train(mapD){
     btn = e.target || e.srcElement;
     currentMap = String(btn.id);
 
-    if(document.getElementById("map") != null){
+    if(document.getElementById("map") != null) {
       document.getElementById("map").remove(); //Reset canvas when changing map.
     }
 
-    d3.csv("./source/data/mm_master_de_train.csv", function(d){
+    d3.csv("./source/data/mm_master_de_train.csv", function(d) {
       map_image = new map(d, currentMap, mapD[2]);
     })
 
@@ -101,17 +102,17 @@ function draw_de_train(mapD){
 
 
 
-function draw(error, mapD){  
+function draw(error, mapD) {  
   if (error) throw error;
-  document.getElementById("de_dust2").onclick = function(event){ //If de_dust2 map is selected.
+  document.getElementById("de_dust2").onclick = function(event) { //If de_dust2 map is selected.
     draw_de_dust2(mapD);
   }
 
-  document.getElementById("de_inferno").onclick = function(event){ //If de_inferno map is selected.
+  document.getElementById("de_inferno").onclick = function(event) { //If de_inferno map is selected.
     draw_de_inferno(mapD)
   }
 
-  document.getElementById("de_train").onclick = function(event){ //If de_train is selected
+  document.getElementById("de_train").onclick = function(event) { //If de_train is selected
     draw_de_train(mapD);
   } 
 }
