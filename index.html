@@ -33,7 +33,7 @@
             
             <h3>Filters for map</h3>
             <div class "filters">
-                <button type="button" class="btn btn-primary active btn-lg" id = "show_damage" disabled>Show damage</button>
+                <button type="button" class="btn btn-primary active btn-lg" id = "reset" disabled>Reset Filter</button>
                 <br>
                 <button type="button" class="btn btn-primary active btn-lg" id = "CT" disabled>Counter Terrorist</button>
                 <br>
@@ -45,15 +45,11 @@
             </div>
                 <hr class="style15">
                 <div class="col-sm-3 sidenav" style="height: 10%;">
-                    <h3>CHARTLMAO</h3>
-                    <div class="btn-group" data-toggle="buttons" layout="row">
-                        <label class="btn btn-primary active">
-                            <input type="radio" name="options" id="option1" autocomplete="off" checked> Winning Side
-                          </label>
-                          <label class="btn btn-primary">
-                            <input type="radio" name="options" id="option2" autocomplete="off"> Best Bomb Site
-                          </label>
-                  </div>
+                    <div class="btn-group">
+                        <h3>Filters for chart</h3>
+                          <button type="button" class="btn btn-primary active btn-sm"  id="wins" disabled> CT OR T MAP?
+                          <button type="button" class="btn btn-primary active btn-sm"  id="bomb" disabled> BEST SITE TO PLANT BOMB?
+                    </div>
                   <div id = "map_chart">
                       <canvas id="canvas" width="400px" height="400px"></canvas>
                     </div>
@@ -100,7 +96,7 @@
                       <br>
                     </h3>  
                     <p style = "font-size: 22px;">
-                      <b>Show Damage:</b> <i>Positional data of damage taken.</i><br><br/> 
+                      <b>Reset Filter:</b> <i>Resets all data points to default.</i><br><br/> 
                       <b>Counter-Terrorist:</b> <i>Apply filter for Counter-Terrorist only.</i><br><br/> 
                       <b>Terrorist:</b> <i>Apply filter for Terrorist only.</i><br><br/> 
                       <b>Where to camp with AWP?!:</b> <i>Density-based clustering on positional data of shooters using AWP.</i><br><br/>

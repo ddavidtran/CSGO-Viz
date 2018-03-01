@@ -77,6 +77,7 @@ function drawPoints(data, width, height){
 
     //DBScan. Density-based spatial clustering of applications with noise.
     document.getElementById("dbscan").onclick = function(){
+        document.getElementById("reset").removeAttribute("disabled");
         document.getElementById("awp_camp").disabled = true;
 
         var dbscanner = jDBSCAN().eps(32.68).minPts(95).distance('EUCLIDEAN').data(t_data);
@@ -101,12 +102,14 @@ function drawPoints(data, width, height){
                             return "red";
                         }
                         else
-                            d3.select(this).remove();
+                            d3.select(this).style("visibility", "hidden");
                     })
         }  
     }
 
     document.getElementById("CT").onclick = function(){
+        document.getElementById("reset").removeAttribute("disabled");
+
         d3.selectAll("circle")
         .attr("cx", function(d) { 
             if(d["vic_side"] == "CounterTerrorist"){
@@ -121,6 +124,8 @@ function drawPoints(data, width, height){
     }
 
     document.getElementById("T").onclick = function(){
+        document.getElementById("reset").removeAttribute("disabled");
+
         d3.selectAll("circle")
         .attr("cx", function(d) { 
             if(d["vic_side"] == "Terrorist"){
@@ -135,6 +140,8 @@ function drawPoints(data, width, height){
     }
 
     document.getElementById("awp_camp").onclick = function(){
+        document.getElementById("reset").removeAttribute("disabled");
+
         d3.selectAll("circle")
         .style("visibility", "hidden");
 
@@ -231,11 +238,13 @@ function map(data, map, mapData){
             .attr("height", height);
 
 
-    document.getElementById("show_damage").onclick = function(){
+    drawPoints(newData, width, height);
+
+    document.getElementById("reset").onclick = function(){
         document.getElementById("CT").removeAttribute("disabled");
         document.getElementById("T").removeAttribute("disabled");
-        document.getElementById("dbscan").removeAttribute("disabled");
         document.getElementById("awp_camp").removeAttribute("disabled");
+        document.getElementById("dbscan").removeAttribute("disabled");
 
         drawPoints(newData, width, height);
     }

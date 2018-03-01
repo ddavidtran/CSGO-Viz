@@ -9,8 +9,6 @@ html,body {
     background-size: cover;
     box-sizing: border-box;
     z-index: -1;
-        /*-moz-transform: scale(0.9);
-    /*-moz-transform: scale(0.67,0.67); /* Moz-browsers */
     zoom: 0.82; /* Other non-webkit browsers */
     zoom: 82%; /* Webkit browsers */
     height: 100%;
