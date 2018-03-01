@@ -1,3 +1,14 @@
+/************************
+ * Function Definitions *
+ * **********************
+ * function showWinSide(data): Calculate number of wins for each side (Counter-Terrorist and Terrorist).
+ * function mostPlantedSites(data): Calculate number of times a bomb has been planted for each bomb site (A or B).
+ * function chart(data): Draw the bar chart.
+ */
+
+var barChart = null; 
+
+
 function showWinSide(data){
     var ctWins = 0;
     var tWins = 0;
@@ -46,10 +57,7 @@ function mostPlantedSites(data){
     return jsonFormat;
 }
 
-var barChart = null; 
-
 function chart(jsonData) {
-    
     //Clear chart if not null
     if(barChart) {
         barChart.destroy();
@@ -89,11 +97,6 @@ function chart(jsonData) {
         legend:{
             display: false,
         },
-        elements: {
-            line: {
-            tension: 0
-            }
-        },
         scales: {
             yAxes: [{
                 ticks: {
@@ -113,7 +116,6 @@ function chart(jsonData) {
                     beginAtZero:true,
                     fontColor: "white",
                 },
-                bezierCurve: false
             }]
         }
     }
