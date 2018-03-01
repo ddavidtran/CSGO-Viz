@@ -266,12 +266,14 @@ function map(data, map, mapData) {
     var height = parseFloat(d3.select("#map_image").style("height"));  //svg height
     var newData = convertCoordinates(data, currentMap, mapData, width, height);
 
-    svg = d3.select("#map_image").append("svg")
-            .attr("class", "w3-animate-opacity img-thumbnail")
-            .attr("id", "map")
-            .attr("width",  width)
-            .attr("height", height);
-    
+    if(document.getElementById('map') == null){
+        svg = d3.select("#map_image").append("svg")
+        .attr("class", "w3-animate-opacity img-thumbnail")
+        .attr("id", "map")
+        .attr("width",  width)
+        .attr("height", height);
+    }
+
     var img = svg.append("image")
             .attr("xlink:href", "./assets/maps/"+currentMap+".png")
             .attr("width", width)
