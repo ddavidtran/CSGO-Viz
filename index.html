@@ -38,16 +38,14 @@
                 <button type="button" class="btn btn-primary active btn-lg" id = "dbscan" disabled>Density Cluster</button>
             </div>
                 <hr class="style15">
-                <div class="col-sm-3 sidenav" style="height: 10%;">
-                    <div class="btn-group">
-                        <h3>Filters for chart</h3>
-                          <button type="button" class="btn btn-primary active btn-sm"  id="wins" disabled> CT OR T MAP?
-                          <button type="button" class="btn btn-primary active btn-sm"  id="bomb" disabled> BEST SITE TO PLANT BOMB?
-                    </div>
-                  <div id = "map_chart">
-                      <canvas id="canvas" width="400px" height="400px"></canvas>
-                  </div>
-          </div>
+                <div class="filters">
+                    <h3>Filters for chart</h3>
+                      <button type="button" class="btn btn-primary active btn-md"  id="wins" disabled> CT OR T MAP?
+                      <button type="button" class="btn btn-primary active btn-md"  id="bomb" disabled> BEST SITE TO PLANT BOMB?
+                </div>
+              <div id = "map_chart">
+                  <canvas id="canvas" width="400px" height="400px"></canvas>
+              </div>
           </div>
           <div class="col-sm-9 text-center border-left">    
             <div class "btn-toolbar" style="margin-top: 3%">
@@ -74,8 +72,7 @@
                 <div class="modal-body">
                     <h3>How to use CS:GO Viz<br><br>
                       1. Choose a CSGO map<br>
-                      2. Click on "Show Damage" button to the left<br>
-                      3. Play around with the filters<br>
+                      2. Play around with the filters<br>
                       <br>
                       <br>
                     </h3>  
@@ -84,7 +81,10 @@
                       <b>Counter-Terrorist:</b> <i>Apply filter for Counter-Terrorist only.</i><br><br/> 
                       <b>Terrorist:</b> <i>Apply filter for Terrorist only.</i><br><br/> 
                       <b>Where to camp with AWP?!:</b> <i>Density-based clustering on positional data of shooters using AWP.</i><br><br/>
-                      <b>Density Cluster:</b> <i>Density-based clustering on positional data of damage taken.</i>
+                      <b>Density Cluster:</b> <i>Density-based clustering on positional data of damage taken.</i><br><br/>
+                      <b>CT or T map?:</b> <i>Change bar chart to show which team has the most wins.</i><br><br/> 
+                      <b>Best site to plant bomb?:</b> <i>Change bar chart to show the most popular bomb site.</i><br><br/> 
+
                     </p>          
                   </div>
                 <div class="modal-footer">
