@@ -3,7 +3,9 @@
 
 
 ### Run
-To try it out clone or download the repository and run  ```reload -b``` in CSGO-Viz root folder. 
+[Demo!](http://davidtran.se/CSGO-Viz)
+
+To try it out on your own machine clone or download the repository and run the files on localhost. 
 
 ### Depends on:
 * [jDBSCAN](https://github.com/upphiminn/jDBSCAN) for density based clustering.
@@ -15,4 +17,3 @@ To try it out clone or download the repository and run  ```reload -b``` in CSGO
 ### Authors:
 - [David Tran](https://github.com/ddavidtran)
 - [Oscar Nord](https://github.com/Furbee)
-
