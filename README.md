@@ -2,6 +2,9 @@
 ![CSGOVIZ](https://github.com/ddavidtran/CSGO-Viz/blob/master/assets/maps/CSGOVIZ.png)
 
 
+#### Run
+To try it out clone or download the repository and run  ```reload -b``` in CSGO-Viz root folder. 
+
 #### Depends on:
 * [jDBSCAN](https://github.com/upphiminn/jDBSCAN) for density based clustering.
 * [Bootstrap](https://getbootstrap.com) for buttery smooth responsiveness.
